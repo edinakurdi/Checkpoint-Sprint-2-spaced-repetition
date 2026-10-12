@@ -1,5 +1,6 @@
 // This is a placeholder
-import { getUserIds } from "./common.mjs";
+import { getUserIds, calculateRevisionDates } from "./common.mjs";
+import { addData } from "./storage.mjs";
 
 window.onload = function () {
   const users = getUserIds();
@@ -63,6 +64,11 @@ function updateDate(newDate) {
 // addTopic()
 function addTopic() {
   // TODO: Validate the form
+  const errors = validateTopicForm();
+  if (errors.length > 0) {
+    setState({ error: errors.join(" ") });
+    return;
+  }
   // TODO: Calculate revision dates
   // TODO: Save the new agenda entries
   // TODO: Update state and reset the form
