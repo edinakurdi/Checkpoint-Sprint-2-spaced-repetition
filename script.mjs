@@ -63,13 +63,33 @@ function updateDate(newDate) {
 
 // addTopic()
 function addTopic() {
-  // TODO: Validate the form
+  // Validate the form
   const errors = validateTopicForm();
   if (errors.length > 0) {
     setState({ error: errors.join(" ") });
     return;
   }
-  // TODO: Calculate revision dates
-  // TODO: Save the new agenda entries
-  // TODO: Update state and reset the form
+
+  // Calculate revision dates
+  const revisionDates = calculateRevisionDates(state.dateInput); //array of date strings
+
+  // Save the new agenda entries
+  const agendaEntries = revisionDates.map((date) => {
+    return {
+      topic: state.topicInput,
+      date,
+    };
+  });
+
+  addData(state.selectedUserId, agendaEntries);
+
+  // Update state and reset the form
+
+  const agenda = getData(state.selectedUserId) || [];
+  setState({
+    agenda,
+    topicInput: "",
+    dateInput: getToday(),
+    error: "",
+  });
 }
