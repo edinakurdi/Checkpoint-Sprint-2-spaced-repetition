@@ -5,6 +5,13 @@ window.onload = function () {
   const users = getUserIds();
   document.querySelector("body").innerText = `There are ${users.length} users`;
 };
+//placeholder finishes
+// todo - check if this needs to be deleted, otherwise merge the imports
+
+//====================================================
+// IMPORTS
+//====================================================
+import { getToday } from "./common.mjs";
 
 //====================================================
 // STATE
@@ -14,7 +21,7 @@ let state = {
   selectedUserId: "",
   agenda: [],
   topicInput: "",
-  dateInput: "",
+  dateInput: getToday(), //today's local date
   error: "",
 };
 
