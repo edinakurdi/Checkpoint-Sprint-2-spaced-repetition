@@ -160,7 +160,29 @@ function render() {
 function renderAgenda() {
   revisionListElement.innerHTML = "";
 
-  state.agenda.forEach((entry) => {
+  // Get todays date
+  const today = getToday();
+
+  // Filter out past revisions
+  const futureRevisions = state.agenda.filter((entry) => {
+    return entry.date >= today;
+  });
+  // Sort future revisions from earliest to latest
+  futureRevisions.sort((a, b) => a.date.localeCompare(b.date));
+
+  // Display a message if there are no upcoming revisions
+  if (futureRevisions.length === 0) {
+    const message = document.createElement("li");
+
+    message.textContent = state.selectedUserId
+      ? "No upcoming revisions."
+      : "Select a user to view your revision agenda.";
+
+    revisionListElement.append(message);
+    return;
+  }
+
+  futureRevisions.forEach((entry) => {
     // Clone the template
     const clone = revisionTemplate.content.cloneNode(true);
 
