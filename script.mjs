@@ -1,18 +1,16 @@
 // This is a placeholder
-import { getUserIds, calculateRevisionDates } from "./common.mjs";
-import { addData } from "./storage.mjs";
-
-window.onload = function () {
-  const users = getUserIds();
-  document.querySelector("body").innerText = `There are ${users.length} users`;
-};
-//placeholder finishes
-// todo - check if this needs to be deleted, otherwise merge the imports
+// window.onload = function () {
+//   const users = getUserIds();
+//   document.querySelector("body").innerText = `There are ${users.length} users`;
+// };
+// //placeholder finishes
+// // todo - check if this needs to be deleted, otherwise merge the imports
 
 //====================================================
 // IMPORTS
 //====================================================
-import { getToday } from "./common.mjs";
+import { getToday, calculateRevisionDates } from "./common.mjs";
+import { getData, addData } from "./storage.mjs";
 
 //====================================================
 // STATE
@@ -29,6 +27,31 @@ let state = {
 function setState(updates) {
   state = { ...state, ...updates };
   render();
+}
+
+//-----------------------------------------
+// VALIDATION
+//-----------------------------------------
+
+function validateTopicForm() {
+  const errors = [];
+
+  // Check whether a user is selected
+  if (!state.selectedUserId) {
+    errors.push("Please select a user.");
+  }
+
+  // Check whether a topic is entered
+  if (!state.topicInput.trim()) {
+    errors.push("Please enter a topic.");
+  }
+
+  // Check whether a date is selected
+  if (!state.dateInput) {
+    errors.push("Please select a date.");
+  }
+
+  return errors;
 }
 
 // ========================================
