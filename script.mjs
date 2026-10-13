@@ -9,7 +9,7 @@
 //====================================================
 // IMPORTS
 //====================================================
-import { getToday, calculateRevisionDates } from "./common.mjs";
+import { getUserIds, getToday, calculateRevisionDates } from "./common.mjs";
 import { getData, addData } from "./storage.mjs";
 
 //====================================================
@@ -116,3 +116,25 @@ function addTopic() {
     error: "",
   });
 }
+// ========================================
+// RENDERING
+// ========================================
+function populateUserSelect() {
+  // 1. Find the <select> element
+  const userSelection = document.getElementById("user-select");
+  // 2. Get the five user IDs
+  const userIds = getUserIds();
+
+  // 3. Create an <option> for each user
+  userIds.forEach((id) => {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = `User ${id}`;
+    userSelection.append(option);
+  });
+}
+// ========================================
+// INITIALISATION
+// ========================================
+
+populateUserSelect();
