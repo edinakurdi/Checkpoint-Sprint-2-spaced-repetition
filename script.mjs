@@ -12,6 +12,13 @@
 import { getUserIds, getToday, calculateRevisionDates } from "./common.mjs";
 import { getData, addData } from "./storage.mjs";
 
+// ========================================
+// DOM ELEMENTS
+// ========================================
+const userSelection = document.getElementById("user-select");
+const topicInputElement = document.getElementById("topic-input");
+const dateInputElement = document.getElementById("date-input");
+
 //====================================================
 // STATE
 //====================================================
@@ -120,8 +127,8 @@ function addTopic() {
 // RENDERING
 // ========================================
 function populateUserSelect() {
-  // 1. Find the <select> element
-  const userSelection = document.getElementById("user-select");
+  // // 1. Find the <select> element
+  // const userSelection = document.getElementById("user-select");
   // 2. Get the five user IDs
   const userIds = getUserIds();
 
@@ -133,8 +140,22 @@ function populateUserSelect() {
     userSelection.append(option);
   });
 }
+
+function render() {
+  //display validation error if any
+  const formError = document.getElementById("form-error");
+  formError.textContent = state.error; //todo what if this is an array?
+
+  //sync user dropdown
+  userSelection.value = state.selectedUserId;
+
+  topicInputElement.value = state.topicInput;
+  dateInputElement.value = state.dateInput;
+}
+
 // ========================================
 // INITIALISATION
 // ========================================
 
 populateUserSelect();
+render();
