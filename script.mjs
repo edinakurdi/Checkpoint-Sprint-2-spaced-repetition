@@ -18,6 +18,8 @@ import { getData, addData } from "./storage.mjs";
 const userSelection = document.getElementById("user-select");
 const topicInputElement = document.getElementById("topic-input");
 const dateInputElement = document.getElementById("date-input");
+const revisionListElement = document.getElementById("revision-list");
+const revisionTemplate = document.getElementById("revision-template");
 
 //====================================================
 // STATE
@@ -151,6 +153,28 @@ function render() {
 
   topicInputElement.value = state.topicInput;
   dateInputElement.value = state.dateInput;
+
+  renderAgenda();
+}
+
+function renderAgenda() {
+  revisionListElement.innerHTML = "";
+
+  state.agenda.forEach((entry) => {
+    // Clone the template
+    const clone = revisionTemplate.content.cloneNode(true);
+
+    // Fill in the topic
+    const topicElement = clone.querySelector("[data-topic]");
+    topicElement.textContent = entry.topic;
+    // Fill in the date
+    const dateElement = clone.querySelector("[data-date]");
+    dateElement.textContent = entry.date;
+    dateElement.setAttribute("datetime", entry.date);
+
+    // Append the completed entry to the list
+    revisionListElement.append(clone);
+  });
 }
 
 // ========================================
