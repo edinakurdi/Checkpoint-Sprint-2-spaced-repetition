@@ -20,6 +20,7 @@ const topicInputElement = document.getElementById("topic-input");
 const dateInputElement = document.getElementById("date-input");
 const revisionListElement = document.getElementById("revision-list");
 const revisionTemplate = document.getElementById("revision-template");
+const topicForm = document.getElementById("topic-form");
 
 //====================================================
 // STATE
@@ -199,6 +200,26 @@ function renderAgenda() {
   });
 }
 
+// ========================================
+// EVENT LISTENERS
+// ========================================
+// User dropdown --> user id changes, displays id's agenda
+userSelection.addEventListener("change", (event) => {
+  selectUser(event.target.value);
+});
+// Topic input --> topicInput should be updated
+topicInputElement.addEventListener("input", (event) => {
+  updateTopic(event.target.value);
+});
+// Date input --> dateInput to be updated on date selection
+dateInputElement.addEventListener("change", (event) => {
+  updateDate(event.target.value);
+});
+// Form submission - when eneter or submit --> addTopic()
+topicForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  addTopic();
+});
 // ========================================
 // INITIALISATION
 // ========================================
