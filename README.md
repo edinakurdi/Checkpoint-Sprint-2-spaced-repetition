@@ -2,7 +2,7 @@
 
 A small website that helps a user decide which topic to revise next, using spaced repetition (reviewing a topic after increasing gaps of time: one week, one month, three months, six months, one year).
 
-The site is live at: TODO add site
+The site is live at: https://edinakurdi.github.io/Checkpoint-Sprint-2-spaced-repetition/
 
 # Built with
 
