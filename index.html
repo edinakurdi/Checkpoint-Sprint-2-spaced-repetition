@@ -1,8 +1,61 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script type="module" src="script.mjs"></script>
-  </head>
-  <body>
-  </body>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spaced Repetition Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="script.mjs"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Spaced Repetition Tracker</h1>
+  </header>
+
+  <main>
+    <section>
+      <label for="user-select">Select user</label>
+      <select name="user-select" id="user-select">
+        <option value="">Select a user</option>
+      </select>
+    </section>
+
+    <section>
+      <h2>Add a new topic</h2>
+      <form id="topic-form" novalidate>
+        <label for="topic-input">Topic to revise</label>
+        <input type="text" id="topic-input" required>
+
+        <label for="date-input">Start date</label>
+        <input type="date" id="date-input" required aria-describedby="date-help">
+        <small id="date-help">
+          Defaults to today. Do not forget to change the date if you started learning this topic earlier.
+        </small>
+
+        <p id="form-error" role="alert"></p>
+
+        <button type="submit">Add topic</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Your revision agenda</h2>
+      <ul id="revision-list"></ul>
+    </section>
+
+    <template id="revision-template">
+      <li>
+        <time datetime="" data-date></time> –
+        <span data-topic></span>
+      </li>
+    </template>
+  </main>
+
+  <footer>
+    <p>&copy; Spaced Repetition Tracker - Project by Edina Kurdi</p>
+  </footer>
+</body>
+
 </html>
