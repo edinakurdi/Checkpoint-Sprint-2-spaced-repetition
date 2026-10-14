@@ -42,7 +42,7 @@ test("calculateRevisionDates() - handles leap years", () => {
   ]);
 });
 
-test("calculateRevisionDates() -handles daylight saving time changes(clock going forward", () => {
+test("calculateRevisionDates() -handles daylight saving time changes(clock going forward)", () => {
   const output = calculateRevisionDates("2026-03-28");
 
   assert.deepEqual(output, [
