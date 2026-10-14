@@ -18,13 +18,13 @@ export function getToday() {
 }
 
 export function addDays(date, days) {
-  const dateWithAddedDays = new Date(date); //create a copy, so the original isnt modified
+  const dateWithAddedDays = new Date(date); //create a copy, so the original isn't modified
 
   // Update the day on the Date object
   dateWithAddedDays.setUTCDate(dateWithAddedDays.getUTCDate() + days);
   //dateWithAddedDays.getUTCDate() grabs the current day of the month (1-31)
   // setUTCDate() updates the Date obj with the new number - this automatically handles if the number is greater than the days in the months, it rolls.
-  // it returns the new date as a timestamp
+  // setUTCDate() changes the copy in place; we return the updated Date object
   return dateWithAddedDays;
 }
 
@@ -36,7 +36,7 @@ export function addMonths(date, months) {
   const targetMonth = date.getUTCMonth() + months;
   // Extracts the current 4-digit year in UTC
   const targetYear = date.getUTCFullYear();
-  // Finds the total days in the target month by grabbing day '0' of the month after it () = last day of the target month)
+  // Finds the total days in the target month by grabbing day '0' of the month after it (= last day of the target month)
   const daysInTargetMonth = new Date(
     Date.UTC(targetYear, targetMonth + 1, 0),
   ).getUTCDate();

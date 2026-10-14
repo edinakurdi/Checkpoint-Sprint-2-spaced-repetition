@@ -1,12 +1,6 @@
-// import { getUserIds } from "./common.mjs";
-//todo - check if above will be used, otherwise delete
 import assert from "node:assert";
 import test from "node:test";
 import { calculateRevisionDates } from "./common.mjs";
-
-// test("User count is correct", () => {
-//   assert.equal(getUserIds().length, 5);
-// }); //todo delete
 
 test("calculateRevisionDates() - handles normal days", () => {
   const output = calculateRevisionDates("2026-10-12");
@@ -42,7 +36,7 @@ test("calculateRevisionDates() - handles leap years", () => {
   ]);
 });
 
-test("calculateRevisionDates() -handles daylight saving time changes(clock going forward)", () => {
+test("calculateRevisionDates() - handles daylight saving time changes (clocks going forward)", () => {
   const output = calculateRevisionDates("2026-03-28");
 
   assert.deepEqual(output, [

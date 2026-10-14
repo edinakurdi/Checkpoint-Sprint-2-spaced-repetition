@@ -37,7 +37,7 @@ _Manual test_: Opened the page multiple times on different days and in different
 ## The form has validation to ensure that both the topic name and and selected date have been set by the user
 
 _Manual test_:
-The topic and date inputs have the required attribute in HTML. Additionally, JavaScript validates that a user is selected and a topic is entered, displaying an error message if either is missing.
+The form uses novalidate so validation is handled in JS: It checks if a user is selected, a topic is entered, and if the date is set and displays an error message for any that are missing. Tried submitting with each of these missing and confirmed the correct error message appeared and nothing was saved.
 
 ## Submitting the form adds a new topic to revise for the relevant user only. The topic’s dates to revise are calculated as one week, one month, three months, six months and one year from the selected date (see manual testing below)
 
@@ -60,5 +60,4 @@ _Unit test_: Tested calculateRevisionDates() in common.test.mjs, including a nor
 
 ## The project must not contain any dead code. All written JavaScript and CSS must be used.
 
-_Manual test_: Reviewed the JavaScript and HTML to identify unused code, outdated comments and unnecessary placeholders.
-Code review: TODO remove unused code, outdated comments and unnecessary placeholders
+_Manual test_: Reviewed JS and HTML for unused code. Removed scaffolding placeholders, commented-out code and outdated TODOs and the unused "clearData()" helper from storage.mjs. All other codes are used.

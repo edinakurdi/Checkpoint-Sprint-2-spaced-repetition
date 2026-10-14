@@ -1,11 +1,3 @@
-// This is a placeholder
-// window.onload = function () {
-//   const users = getUserIds();
-//   document.querySelector("body").innerText = `There are ${users.length} users`;
-// };
-// //placeholder finishes
-// // todo - check if this needs to be deleted, otherwise merge the imports
-
 //====================================================
 // IMPORTS
 //====================================================
@@ -67,7 +59,6 @@ function validateTopicForm() {
 // ACTIONS
 // ========================================
 
-// selectUser()
 function selectUser(userId) {
   const agenda = getData(userId) || [];
 
@@ -80,12 +71,9 @@ function selectUser(userId) {
   });
 }
 
-//updateTopic(newTopic)
 function updateTopic(newTopic) {
   setState({ topicInput: newTopic });
 }
-
-// updateDate(newDate)
 
 function updateDate(newDate) {
   // Receives the new date as a string, e.g. "2026-11-15"
@@ -93,7 +81,6 @@ function updateDate(newDate) {
   setState({ dateInput: newDate });
 }
 
-// addTopic()
 function addTopic() {
   // Validate the form
   const errors = validateTopicForm();
@@ -129,12 +116,10 @@ function addTopic() {
 // RENDERING
 // ========================================
 function populateUserSelect() {
-  // // 1. Find the <select> element
-  // const userSelection = document.getElementById("user-select");
-  // 2. Get the five user IDs
+  // 1. Get the five user IDs
   const userIds = getUserIds();
 
-  // 3. Create an <option> for each user
+  // 2. Create an <option> for each user
   userIds.forEach((id) => {
     const option = document.createElement("option");
     option.value = id;
@@ -146,7 +131,7 @@ function populateUserSelect() {
 function render() {
   //display validation error if any
   const formError = document.getElementById("form-error");
-  formError.textContent = state.error; //todo what if this is an array?
+  formError.textContent = state.error;
 
   //sync user dropdown
   userSelection.value = state.selectedUserId;
@@ -219,7 +204,7 @@ topicInputElement.addEventListener("input", (event) => {
 dateInputElement.addEventListener("change", (event) => {
   updateDate(event.target.value);
 });
-// Form submission - when eneter or submit --> addTopic()
+// Form submission - when Enter or submit --> addTopic()
 topicForm.addEventListener("submit", (event) => {
   event.preventDefault();
   addTopic();
