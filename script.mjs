@@ -56,11 +56,6 @@ function validateTopicForm() {
     errors.push("Please enter a topic.");
   }
 
-  // Check whether a date is selected
-  if (!state.dateInput) {
-    errors.push("Please select a date.");
-  }
-
   return errors;
 }
 

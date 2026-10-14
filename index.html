@@ -28,7 +28,10 @@
         <input type="text" id="topic-input" required>
 
         <label for="date-input">Start date</label>
-        <input type="date" id="date-input" required>
+        <input type="date" id="date-input" require aria-describedby="date-help">
+        <small id="date-help">
+          Defaults to today. Do not forget to change the date if you started learning this topic earlier.
+        </small>
 
         <p id="form-error" role="alert"></p>
 
