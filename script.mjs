@@ -104,7 +104,7 @@ function addTopic() {
   // Save the new agenda entries
   const agendaEntries = revisionDates.map((date) => {
     return {
-      topic: state.topicInput,
+      topic: state.topicInput.trim(),
       date,
     };
   });
