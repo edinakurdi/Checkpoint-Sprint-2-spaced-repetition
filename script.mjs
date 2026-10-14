@@ -192,7 +192,12 @@ function renderAgenda() {
     topicElement.textContent = entry.topic;
     // Fill in the date
     const dateElement = clone.querySelector("[data-date]");
-    dateElement.textContent = entry.date;
+    dateElement.textContent = new Date(entry.date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+      timeZone: "UTC",
+    });
     dateElement.setAttribute("datetime", entry.date);
 
     // Append the completed entry to the list
