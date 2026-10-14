@@ -38,7 +38,6 @@ _Manual test_: Opened the page multiple times on different days and in different
 
 _Manual test_:
 The topic and date inputs have the required attribute in HTML. Additionally, JavaScript validates that a user is selected and a topic is entered, displaying an error message if either is missing.
-todo - adjust: del html validation, and correct js validation
 
 ## Submitting the form adds a new topic to revise for the relevant user only. The topic’s dates to revise are calculated as one week, one month, three months, six months and one year from the selected date (see manual testing below)
 
